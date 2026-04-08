@@ -55,13 +55,6 @@
 <body>
     
    <div class="container">
-       <div class="slider">
-    <div class="slider-item active" onclick="openslider(event, 'kq')">KẾT QUẢ LIVE</div>
-    <div class="slider-item" onclick="openslider(event, 'ghep'">GHÉP SỐ</div>
-    <div class="slider-item" onclick="openslider(event, 'thongke')">THỐNG KÊ</div>
-    <div class="slider-item" onclick="openslider(event, 'soicau')">SOI CẦU</div>
-       </div>
-        
         <div class="tabs">
         <div class="tab-item active" onclick="openTab(event, 'kq')">KẾT QUẢ LIVE</div>
         <div class="tab-item" onclick="openTab(event, 'ghep')">GHÉP SỐ</div>
@@ -130,14 +123,7 @@
         evt.currentTarget.classList.add('active');
         if(tabName === 'thongke') drawChart();
     }
-    function openslider(evt, sliderName) {
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.slider-item').forEach(t => t.classList.remove('active'));
-        document.getElementById(sliderName).classList.add('active');
-        evt.currentTarget.classList.add('active');
-        if(sliderName === 'thongke') drawChart();
-    }
-
+    
     // Khởi tạo phím số
     let chucSet = new Set(), dvSet = new Set();
     function initButtons() {
