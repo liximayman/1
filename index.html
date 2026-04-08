@@ -50,30 +50,6 @@
         .panel { display: none; padding: 10px; }
         .panel.active { display: block; }
         .stat-card { background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 10px; border-left: 4px solid var(--blue); }
-    
-    /* 1. Thiết lập vùng chứa */
-.my-custom-slider {
-    display: flex;                /* Xếp các item nằm ngang */
-    overflow-x: auto;             /* Cho phép vuốt/cuộn ngang */
-    scroll-snap-type: x mandatory;/* Hiệu ứng 'hít' vào từng mục khi vuốt */
-    gap: 16px;                    /* Khoảng cách giữa các mục */
-    padding: 10px 0;
-    scrollbar-width: none;        /* Ẩn thanh cuộn trên Firefox */
-}
-
-/* Ẩn thanh cuộn trên Chrome, Safari và Edge */
-.my-custom-slider::-webkit-scrollbar {
-    display: none;
-}
-
-/* 2. Thiết lập từng mục con */
-.slider-item {
-    flex: 0 0 70%;                /* Mỗi mục chiếm 70% chiều rộng màn hình */
-    min-height: 200px;            /* Chiều cao tùy ý bạn */
-    background: #f0f0f0;          /* Màu nền tạm thời */
-    border-radius: 12px;          /* Bo góc cho đẹp */
-    scroll-snap-align: center;    /* Khi dừng vuốt, mục sẽ nằm giữa */
-}
     </style>
 </head>
 <body>
@@ -153,6 +129,13 @@
         document.getElementById(tabName).classList.add('active');
         evt.currentTarget.classList.add('active');
         if(tabName === 'thongke') drawChart();
+    }
+    function openslider(evt, sliderName) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.slider-item').forEach(t => t.classList.remove('active'));
+        document.getElementById(sliderName).classList.add('active');
+        evt.currentTarget.classList.add('active');
+        if(sliderName === 'thongke') drawChart();
     }
 
     // Khởi tạo phím số
