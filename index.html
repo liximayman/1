@@ -59,14 +59,21 @@
     </style>
 </head>
 <body>
-
-<div class="my-custom-slider">
-    <div class="container">
-    <div class="tabs">
-        <div class="tab-item active" onclick="slider-item(event, 'kq')">KẾT QUẢ LIVE</div>
-        <div class="tab-item" onclick="slider-item(event, 'ghep')">GHÉP SỐ</div>
-        <div class="tab-item" onclick="slideritem(event, 'thongke')">THỐNG KÊ</div>
-        <div class="tab-item" onclick="slideritem(event, 'soicau')">SOI CẦU</div>
+    
+   <div class="container">
+    <div class="my-custom-slider">
+       <div class="my-custom-slider">
+    <div class="slider-item">KẾT QUẢ LIVE</div>
+    <div class="slider-item">GHÉP SỐ</div>
+    <div class="slider-item">THỐNG KÊ</div>
+    <div class="slider-item">SOI CẦU</div>
+       </div>
+        
+        <div class="tabs">
+        <div class="tab-item active" onclick="openTab(event, 'kq')">KẾT QUẢ LIVE</div>
+        <div class="tab-item" onclick="openTab(event, 'ghep')">GHÉP SỐ</div>
+        <div class="tab-item" onclick="openTab(event, 'thongke')">THỐNG KÊ</div>
+        <div class="tab-item" onclick="openTab(event, 'soicau')">SOI CẦU</div>
     </div>
 
         <div id="kq" class="panel active">
