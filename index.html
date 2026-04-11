@@ -101,8 +101,78 @@
 
     </div>
 </div>
+<div class="tabs-container">
+    <div class="tabs-header">
+        <div class="tab-item active" onclick="switchTab(0)">KẾT QUẢ</div>
+        <div class="tab-item" onclick="switchTab(1)">GHÉP SỐ</div>
+        <div class="tab-line"></div>
+    </div>
 
+    <div class="tabs-content">
+        <div class="content-wrapper">
+            <div class="tab-pane">
+                <h2>Nội dung Kết Quả</h2>
+                <p>Hiển thị danh sách kết quả xổ số tại đây...</p>
+            </div>
+            <div class="tab-pane">
+                <h2>Nội dung Ghép Số</h2>
+                <p>Giao diện chọn số hàng chục/đơn vị...</p>
+            </div>
+        </div>
+    </div>
+</div>
+    
 <script>
+ body { font-family: sans-serif; background: #121212; color: white; margin: 0; }
+
+.tabs-header {
+    display: flex;
+    position: relative;
+    background: #000;
+    border-bottom: 1px solid #333;
+}
+
+.tab-item {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #888;
+    transition: 0.3s;
+}
+
+.tab-item.active { color: white; }
+
+/* Thanh gạch chân màu đỏ di chuyển */
+.tab-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 3px;
+    background: #e74c3c;
+    transition: 0.3s ease;
+}
+
+/* Container chứa nội dung trượt */
+.tabs-content {
+    overflow: hidden;
+    width: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 200%; /* Vì có 2 tab nên rộng gấp đôi */
+    transition: 0.5s ease;
+}
+
+.tab-pane {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+        }
+    
     function openTab(evt, tabName) {
         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
@@ -171,7 +241,22 @@
         const text = document.getElementById('display-dan').innerText;
         navigator.clipboard.writeText(text).then(() => alert("Đã sao chép!"));
     }
+function switchTab(index) {
+    const panes = document.querySelector('.content-wrapper');
+    const line = document.querySelector('.tab-line');
+    const items = document.querySelectorAll('.tab-item');
 
+    // Di chuyển nội dung (0% cho tab 1, -50% cho tab 2)
+    panes.style.transform = `translateX(-${index * 50}%)`;
+
+    // Di chuyển thanh gạch chân (0% cho tab 1, 100% cho tab 2)
+    line.style.transform = `translateX(${index * 100}%)`;
+
+    // Cập nhật trạng thái Active
+    items.forEach(item => item.classList.remove('active'));
+    items[index].classList.add('active');
+            }
+    
     window.onload = initButtons;
 </script>
 </body>
