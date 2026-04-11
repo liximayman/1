@@ -51,7 +51,6 @@
         .panel.active { display: block; }
         .stat-card { background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 10px; border-left: 4px solid var(--blue); }
     
-    
     <script>
 </head>
 <body>
@@ -108,19 +107,6 @@
         <div class="tab-item active" onclick="switchTab(0)">KẾT QUẢ</div>
         <div class="tab-item" onclick="switchTab(1)">GHÉP SỐ</div>
         <div class="tab-line"></div>
-    </div>
-
-    <div class="tabs-content">
-        <div class="content-wrapper">
-            <div class="tab-pane">
-                <h2>Nội dung Kết Quả</h2>
-                <p>Hiển thị danh sách kết quả xổ số tại đây...</p>
-            </div>
-            <div class="tab-pane">
-                <h2>Nội dung Ghép Số</h2>
-                <p>Giao diện chọn số hàng chục/đơn vị...</p>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -189,26 +175,6 @@
             }
         });
     }
-
-    function copyToClipboard() {
-        const text = document.getElementById('display-dan').innerText;
-        navigator.clipboard.writeText(text).then(() => alert("Đã sao chép!"));
-    }
-function switchTab(index) {
-    const panes = document.querySelector('.content-wrapper');
-    const line = document.querySelector('.tab-line');
-    const items = document.querySelectorAll('.tab-item');
-
-    // Di chuyển nội dung (0% cho tab 1, -50% cho tab 2)
-    panes.style.transform = `translateX(-${index * 50}%)`;
-
-    // Di chuyển thanh gạch chân (0% cho tab 1, 100% cho tab 2)
-    line.style.transform = `translateX(${index * 100}%)`;
-
-    // Cập nhật trạng thái Active
-    items.forEach(item => item.classList.remove('active'));
-    items[index].classList.add('active');
-            }
     
     window.onload = initButtons;
 </script>
