@@ -142,7 +142,6 @@
         let id = (type === 'chuc') ? `c-${n}` : `d-${n}`;
         if(set.has(n)) set.delete(n); else set.add(n);
         document.getElementById(id).classList.toggle('active');
-        document.getElementById(id).openCard.toggle('active');
         renderDan();
     }
 
