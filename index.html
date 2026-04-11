@@ -142,6 +142,7 @@
         let id = (type === 'chuc') ? `c-${n}` : `d-${n}`;
         if(set.has(n)) set.delete(n); else set.add(n);
         document.getElementById(id).classList.toggle('active');
+        document.getElementById(id).openCard.toggle('active');
         renderDan();
     }
 
@@ -158,8 +159,6 @@
     function clearSet(type) {
         if(type==='chuc') { chucSet.clear(); document.querySelectorAll('#chuc-grid button').forEach(b=>b.classList.remove('active')); }
         else { dvSet.clear(); document.querySelectorAll('#dv-grid button').forEach(b=>b.classList.remove('active')); }
-        else { dvSet.clear(); document.querySelectorAll('#dv-grid button').forEach(b=>b.classList.remove('active')); }
-        
         renderDan();
     }
 
