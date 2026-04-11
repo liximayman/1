@@ -83,7 +83,7 @@
             <button class="btn-num" style="font-size:12px; height:35px;" onclick="selectQuick('chuc', 'le')">Lẻ</button>
             <button class="btn-num" style="font-size:12px; height:35px;" onclick="selectQuick('chuc', 'chan')">Chẵn</button>
             <button class="btn-num" style="font-size:12px; height:35px; background:#600;" onclick="clearSet('chuc')">Xóa</button>
-       <button class="btn-num" style="font-size:12px; height:35px; background:#007bff;" onclick="selectQuick('chuc', 'chontatca')">chọn tất cả</button>    
+       <button class="btn-num" style="font-size:12px; height:35px; background:#007bff;" onclick="openCard('chuc')">chọn tất cả</button>    
         </div>
 
         <h4 style="margin: 10px 0;">ĐUÔI (Hàng đơn vị)</h4>
@@ -142,6 +142,7 @@
         let id = (type === 'chuc') ? `c-${n}` : `d-${n}`;
         if(set.has(n)) set.delete(n); else set.add(n);
         document.getElementById(id).classList.toggle('active');
+        document.getElementById(id).openCard.toggle('active');
         renderDan();
     }
 
