@@ -50,7 +50,57 @@
         .panel { display: none; padding: 10px; }
         .panel.active { display: block; }
         .stat-card { background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 10px; border-left: 4px solid var(--blue); }
-    </style>
+    
+    body { font-family: sans-serif; background: #121212; color: white; margin: 0; }
+
+.tabs-header {
+    display: flex;
+    position: relative;
+    background: #000;
+    border-bottom: 1px solid #333;
+}
+
+.tab-item {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #888;
+    transition: 0.3s;
+}
+
+.tab-item.active { color: white; }
+
+/* Thanh gạch chân màu đỏ di chuyển */
+.tab-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 3px;
+    background: #e74c3c;
+    transition: 0.3s ease;
+}
+
+/* Container chứa nội dung trượt */
+.tabs-content {
+    overflow: hidden;
+    width: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 200%; /* Vì có 2 tab nên rộng gấp đôi */
+    transition: 0.5s ease;
+}
+
+.tab-pane {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+    <script>
 </head>
 <body>
     
@@ -121,58 +171,9 @@
         </div>
     </div>
 </div>
-    
+
 <script>
- body { font-family: sans-serif; background: #121212; color: white; margin: 0; }
 
-.tabs-header {
-    display: flex;
-    position: relative;
-    background: #000;
-    border-bottom: 1px solid #333;
-}
-
-.tab-item {
-    flex: 1;
-    padding: 15px 0;
-    text-align: center;
-    cursor: pointer;
-    font-weight: bold;
-    color: #888;
-    transition: 0.3s;
-}
-
-.tab-item.active { color: white; }
-
-/* Thanh gạch chân màu đỏ di chuyển */
-.tab-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50%;
-    height: 3px;
-    background: #e74c3c;
-    transition: 0.3s ease;
-}
-
-/* Container chứa nội dung trượt */
-.tabs-content {
-    overflow: hidden;
-    width: 100%;
-}
-
-.content-wrapper {
-    display: flex;
-    width: 200%; /* Vì có 2 tab nên rộng gấp đôi */
-    transition: 0.5s ease;
-}
-
-.tab-pane {
-    width: 50%;
-    padding: 20px;
-    box-sizing: border-box;
-        }
-    
     function openTab(evt, tabName) {
         document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
