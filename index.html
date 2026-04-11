@@ -58,7 +58,7 @@
         <div class="tabs">
         <div class="tab-item active" onclick="openTab(event, 'kq')">KẾT QUẢ</div>
         <div class="tab-item" onclick="openTab(event, 'ghep')">GHÉP SỐ</div>
-        <div class="tab-item" onclick="opentab(event, 'xieng')">XIÊNG GHÉP</div>
+        <div class="tab-item" onclick="opentab(event, 'xien')">XIÊN GHÉP</div>
         </div>
 
         <div id="kq" class="panel active">
@@ -96,7 +96,7 @@
         <button class="btn-num" style="font-size:12px; height:35px; background:#007bff;" onclick="selectQuick('dv', 'tatca')">tất cả</button>    
       </div>
 
-        <div id="xieng" class="panel">
+        <div id="xien" class="panel">
         <h4 style="margin: 10px 0;">ĐẦU (Hàng chục)</h4>
         <div class="grid-num" id="chuc-grid"></div>
         <div id="chuc-tools" class="grid-num" style="grid-template-columns: repeat(5, 1fr); padding-top:0;">
@@ -188,6 +188,45 @@
         const text = document.getElementById('display-dan').innerText;
         navigator.clipboard.writeText(text).then(() => alert("Đã sao chép!"));
     }
+    function generateXien() {
+    const input = document.getElementById('inputNumbers').value;
+    const k = parseInt(document.getElementById('xienType').value);
+    
+    // Tách số và làm sạch dữ liệu
+    let nums = input.replace(/[^0-9\s,]/g, '').split(/[\s,]+/).filter(n => n.length > 0);
+    nums = [...new Set(nums)];
+
+    if (nums.length < k) {
+        alert("Bạn cần nhập ít nhất " + k + " số khác nhau!");
+        return;
+    }
+
+    const results = [];
+    function combine(start, chosen) {
+        if (chosen.length === k) {
+            results.push(chosen.join("-"));
+            return;
+        }
+        for (let i = start; i < nums.length; i++) {
+            combine(i + 1, [...chosen, nums[i]]);
+        }
+    }
+    combine(0, []);
+
+    document.getElementById('resultArea').style.display = 'block';
+    document.getElementById('totalCount').innerText = results.length;
+    
+    // Hiển thị kèm nút Copy
+    const resultBox = document.getElementById('result');
+    resultBox.innerHTML = `<button onclick="copyToClipboard()" style="margin-bottom:10px; background:#1565c0; font-size:12px;">Sao chép tất cả</button><br>` + results.join(", ");
+}
+
+function copyToClipboard() {
+    const text = document.getElementById('result').innerText.replace('Sao chép tất cả', '');
+    navigator.clipboard.writeText(text.trim());
+    alert(" Đã sao chép danh sách số!");
+    }
+    
 
     window.onload = initButtons;
 </script>
