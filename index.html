@@ -44,30 +44,17 @@
         }
         .tab-item.active { color: var(--primary); border-bottom: 3px solid var(--primary); background: #1a1a1a; }
 
-        /* KHU VỰC LIVE BOX - CỐ ĐỊNH 25% CHIỀU CAO MÀN HÌNH */
-        .live-container {
-            padding: 5px;
-            background: #000;
-        }
+        .live-container { padding: 5px; background: #000; }
         .live-box {
             width: 100%;
-            height: 50vh; /* Chỉ chiếm 25% chiều cao màn hình */
+            height: 30vh; 
             overflow-y: auto; 
-            overflow-x: hidden;
-            position: relative;
             background: #fff;
             border-radius: 6px;
             border: 1px solid var(--gray);
-            -webkit-overflow-scrolling: touch;
         }
-        .live-box iframe {
-            width: 100%;
-            height: 1500px; /* Chiều cao nội dung gốc để cuộn bên trong */
-            border: none;
-            display: block;
-        }
+        .live-box iframe { width: 100%; height: 1000px; border: none; }
 
-        /* DÀN SỐ HIỂN THỊ */
         #display-dan { 
             background: #050505; 
             padding: 12px; 
@@ -79,61 +66,50 @@
             border: 1px dashed #444; 
             font-family: 'Courier New', monospace; 
             font-size: 13px; 
-            line-height: 1.4;
         }
 
-        /* TỐI ƯU LẠI GRID NÚT BẤM */
         .grid-num { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 0,5px; 
+            gap: 5px; 
             padding: 8px; 
         }
         .btn-num { 
             background: #262626; 
-            border: 0,5px solid #444; 
+            border: 1px solid #444; 
             color: white; 
-            padding: 8px 0; 
-            border-radius: 0,5px; 
+            padding: 10px 0; 
+            border-radius: 4px; 
             font-size: 15px; 
             font-weight: 600;
             cursor: pointer; 
-            transition: 0.2s;
         }
-        .btn-num:active { transform: scale(0.9); }
-        .btn-num.active { background: var(--secondary); border-color: #fff; color: #000; }
+        .btn-num.active { background: var(--secondary); color: #000; border-color: #fff; }
         
-        
-
         .panel { display: none; }
         .panel.active { display: block; }
-
-        h4 { margin: 1px 0 1px 1px; color: var(--blue); font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        h4 { margin: 15px 10px 5px; color: var(--blue); font-size: 14px; }
         
         .btn-copy-main { 
-            width: calc(100% - 1px); 
+            width: calc(100% - 24px); 
             padding: 14px; 
             background: var(--blue); 
             border: none; 
             color: white; 
             font-weight: bold; 
             border-radius: 6px; 
-            cursor: pointer; 
             margin: 12px;
-            font-size: 15px;
+            cursor: pointer;
         }
 
-        /* XIÊN GHÉP */
         textarea, select { 
             width: calc(100% - 20px); 
             background: #1a1a1a; 
             color: #fff; 
             border: 1px solid #444; 
             padding: 10px; 
-            border-radius: 6px; 
             margin: 5px 10px; 
-            box-sizing: border-box; 
-            font-size: 14px;
+            border-radius: 6px;
         }
         .result-box { 
             background: #000; 
@@ -141,9 +117,7 @@
             color: #2ecc71; 
             margin: 10px; 
             border-radius: 6px; 
-            border: 1px solid #333; 
             min-height: 40px; 
-            font-family: monospace;
         }
     </style>
 </head>
@@ -151,15 +125,11 @@
     
     <div class="container">
         <div class="tabs">
-            <div class="tab-item active" onclick="openTab(event, 'main-tool')">KẾT QUẢ & GHÉP SỐ</div>
+            <div class="tab-item active" onclick="openTab(event, 'main-tool')">GHÉP DÀN</div>
             <div class="tab-item" onclick="openTab(event, 'xien')">XIÊN GHÉP</div>
         </div>
 
         <div id="main-tool" class="panel active">
-            <div style="text-align: center; margin-top: 8px;">
-                <span style="color: #2ecc71; font-size: 10px; font-weight: bold;">● DỮ LIỆU TRỰC TUYẾN 2026</span>
-            </div>
-            
             <div class="live-container">
                 <div class="live-box">
                     <iframe src="https://az24.vn/xsmb-30-ngay.html"></iframe>
@@ -167,53 +137,36 @@
                 <div id="display-dan">Dàn số: (Chưa chọn)</div>
             </div>
             
-            <label style="margin-left:10px; font-size:13px;">Chọn loại D:</label>
-            <select id="DType">
-            </select>
-        </div>
-        
-        <h4>1. 4D</h4>
+            <h4>1. HÀNG NGHÌN (4D)</h4>
             <div class="grid-num" id="nghin-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
+            <div class="grid-num" style="grid-template-columns: repeat(3, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('nghin', 'chan')">CHẴN</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('nghin', 'le')">LẺ</button>
-                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('nghin', 'tatca')">TẤT CẢ</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('nghin', 'tai')">TÀI</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('nghin', 'xiu')">XỈU</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('nghin'); clearSet('xoa')">XÓA</button>
-            </div>
-        
-        <h4>1. 3D</h4>
-            <div class="grid-num" id="tram-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('tram', 'chan')">CHẴN</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('tram', 'le')">LẺ</button>
-                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('tram', 'tatca')">TẤT CẢ</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('tram', 'tai')">TÀI</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('tram', 'xiu')">XỈU</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('tram'); clearSet('xoa')">XÓA</button>
-            </div>
-        
-         <h4>1. 2D</h4>
-            <div class="grid-num" id="chuc-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">LẺ</button>
-                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('chuc', 'tatca')">TẤT CẢ</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">TÀI</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">XỈU</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('xoa')">XÓA</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('nghin')">XÓA</button>
             </div>
 
-            <h4>2. 1D</h4>
+            <h4>2. HÀNG TRĂM (3D)</h4>
+            <div class="grid-num" id="tram-grid"></div>
+            <div class="grid-num" style="grid-template-columns: repeat(3, 1fr); padding-top:0;">
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('tram', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('tram', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('tram')">XÓA</button>
+            </div>
+        
+            <h4>3. HÀNG CHỤC (2D)</h4>
+            <div class="grid-num" id="chuc-grid"></div>
+            <div class="grid-num" style="grid-template-columns: repeat(3, 1fr); padding-top:0;">
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc')">XÓA</button>
+            </div>
+
+            <h4>4. HÀNG ĐƠN VỊ (1D)</h4>
             <div class="grid-num" id="dv-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
+            <div class="grid-num" style="grid-template-columns: repeat(3, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'chan')">CHẴN</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'le')">LẺ</button>
-                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('dv', 'tatca')">TẤT CẢ</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'tai')">TÀI</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'xiu')">XỈU</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('xoa')">XÓA</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv')">XÓA</button>
             </div>
 
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
@@ -221,22 +174,16 @@
 
         <div id="xien" class="panel" style="padding:10px;">
             <h3 style="color:var(--secondary); text-align:center;">GHÉP XIÊN TỰ ĐỘNG</h3>
-            <label style="margin-left:10px; font-size:13px;">Nhập dãy số (cách nhau dấu cách):</label>
-            <textarea id="inputNumbers" rows="3" placeholder="Ví dụ: 01 15 24 88 92"></textarea>
-
-            <label style="margin-left:10px; font-size:13px;">Chọn loại xiên:</label>
+            <textarea id="inputNumbers" rows="3" placeholder="Nhập các số cách nhau bằng dấu cách..."></textarea>
             <select id="xienType">
-                <option value="2">Xiên 2 (Cặp 2 số)</option>
-                <option value="3">Xiên 3 (Cặp 3 số)</option>
-                <option value="4">Xiên 4 (Cặp 4 số)</option>
+                <option value="2">Xiên 2</option>
+                <option value="3">Xiên 3</option>
+                <option value="4">Xiên 4</option>
             </select>
-
-            <button onclick="processXien()" class="btn-copy-main" style="background: var(--secondary);">BẮT ĐẦU GHÉP XIÊN</button>
-            
+            <button onclick="processXien()" class="btn-copy-main" style="background: var(--secondary);">BẮT ĐẦU GHÉP</button>
             <div id="resultContainer" style="display:none;">
                 <div id="output" class="result-box"></div>
-                <div id="count" style="text-align:right; font-size:12px; margin-right:15px; color:#888;"></div>
-                <button id="copyXienBtn" onclick="copyXien()" class="btn-copy-main" style="background: #555;">SAO CHÉP KẾT QUẢ</button>
+                <button onclick="copyXien()" class="btn-copy-main" style="background: #555;">SAO CHÉP XIÊN</button>
             </div>
         </div>
     </div>
@@ -245,24 +192,95 @@
     let nghinSet = new Set(), tramSet = new Set(), chucSet = new Set(), dvSet = new Set();
     let currentXienResult = "";
     
-    function renderDan() {
-        let res = [];
-        let nghinArr = Array.from(nghinSet).sort();
-        let tramArr = Array.from(tramSet).sort();
-        let chucArr = Array.from(chucSet).sort();
-        let dvArr = Array.from(dvSet).sort();
+    function initButtons() {
+        const grids = {
+            'nghin': document.getElementById('nghin-grid'),
+            'tram': document.getElementById('tram-grid'),
+            'chuc': document.getElementById('chuc-grid'),
+            'dv': document.getElementById('dv-grid')
+        };
         
-        nghinArr.forEach(n => tramArr.forEach(t => chucArr.forEach(c => dvArr.forEach(d => res.push(n + "" + t + "" + c + "" + d)))));
-        document.getElementById('display-dan').innerText = res.length > 0 ? "Dàn (" + res.length + " số): " + res.join(", ") : "Dàn số: (Chọn số để tạo dàn)";
+        for (let type in grids) {
+            grids[type].innerHTML = ""; // Clear cũ
+            for (let i = 0; i < 10; i++) {
+                let prefix = type === 'nghin' ? 'n' : (type === 'tram' ? 't' : (type === 'chuc' ? 'c' : 'd'));
+                grids[type].innerHTML += `<button class="btn-num" id="${prefix}-${i}" onclick="toggleNum('${type}', ${i})">${i}</button>`;
+            }
+        }
     }
 
-    function initButtons() {
-        const cGrid = document.getElementById('chuc-grid');
-        const dGrid = document.getElementById('dv-grid');
-        for(let i=0; i<10; i++) {
-            cGrid.innerHTML += `<button class="btn-num" id="c-${i}" onclick="toggleNum('chuc', ${i})">${i}</button>`;
-            dGrid.innerHTML += `<button class="btn-num" id="d-${i}" onclick="toggleNum('dv', ${i})">${i}</button>`;
+    function toggleNum(type, n) {
+        let set, prefix;
+        if (type === 'nghin') { set = nghinSet; prefix = 'n'; }
+        else if (type === 'tram') { set = tramSet; prefix = 't'; }
+        else if (type === 'chuc') { set = chucSet; prefix = 'c'; }
+        else { set = dvSet; prefix = 'd'; }
+
+        const btn = document.getElementById(`${prefix}-${n}`);
+        if (set.has(n)) {
+            set.delete(n);
+            btn.classList.remove('active');
+        } else {
+            set.add(n);
+            btn.classList.add('active');
         }
+        renderDan();
+    }
+
+    function renderDan() {
+        let res = [];
+        let nArr = Array.from(nghinSet).sort();
+        let tArr = Array.from(tramSet).sort();
+        let cArr = Array.from(chucSet).sort();
+        let dArr = Array.from(dvSet).sort();
+
+        // Tự động nhận diện loại dàn (nếu hàng nào trống thì bỏ qua hàng đó)
+        let loopN = nArr.length ? nArr : [""];
+        let loopT = tArr.length ? tArr : [""];
+        let loopC = cArr.length ? cArr : [""];
+        let loopD = dArr.length ? dArr : [""];
+
+        if (!nArr.length && !tArr.length && !cArr.length && !dArr.length) {
+            document.getElementById('display-dan').innerText = "Dàn số: (Chưa chọn)";
+            return;
+        }
+
+        loopN.forEach(n => {
+            loopT.forEach(t => {
+                loopC.forEach(c => {
+                    loopD.forEach(d => {
+                        res.push(`${n}${t}${c}${d}`);
+                    });
+                });
+            });
+        });
+
+        document.getElementById('display-dan').innerText = `Dàn (${res.length} số): ` + res.join(", ");
+    }
+
+    function selectQuick(type, mode) {
+        for (let i = 0; i < 10; i++) {
+            let shouldSelect = false;
+            if (mode === 'chan' && i % 2 === 0) shouldSelect = true;
+            if (mode === 'le' && i % 2 !== 0) shouldSelect = true;
+            
+            // Nếu nút chưa được chọn mà cần chọn, hoặc đã chọn mà không đúng mode thì xử lý
+            let set = (type === 'nghin' ? nghinSet : (type === 'tram' ? tramSet : (type === 'chuc' ? chucSet : dvSet)));
+            if (shouldSelect && !set.has(i)) toggleNum(type, i);
+            if (!shouldSelect && set.has(i)) toggleNum(type, i);
+        }
+    }
+
+    function clearSet(type) {
+        let set, prefix;
+        if (type === 'nghin') { set = nghinSet; prefix = 'n'; }
+        else if (type === 'tram') { set = tramSet; prefix = 't'; }
+        else if (type === 'chuc') { set = chucSet; prefix = 'c'; }
+        else { set = dvSet; prefix = 'd'; }
+        
+        set.clear();
+        document.querySelectorAll(`#${type}-grid .btn-num`).forEach(b => b.classList.remove('active'));
+        renderDan();
     }
 
     function openTab(evt, tabName) {
@@ -272,64 +290,10 @@
         evt.currentTarget.classList.add('active');
     }
 
-    function toggleNum(type, n) {
-        let set = (type === 'nghin') ? nghinSet : tramSet : chucSet : dvSet;
-        let id = (type === 'nghin') ? `n-${n}` : `t-${n}` : `c-${n}` : `d-${n}`;
-        let set = (type === 'tram') ? tramSet : chucSet : dvSet;
-        let id = (type === 'tram') ? `t-${t}` : `c-${t}` : `d-${t}`;
-        let set = (type === 'chuc') ? chucSet : dvSet;
-        let id = (type === 'chuc') ? `c-${c}` : `d-${c}`;
-        
-        const btn = document.getElementById(id);
-        
-        if(set.has(n)) { set.delete(n); btn.classList.remove('active'); } 
-        else { set.add(n); btn.classList.add('active'); }
-        ì(set.has(t)) { set.delete(t); btn.classList.remove('active'); }
-        else { set.add(t); btn.classList.add('active'); }
-        if(set.has(c)) { set.delete(c); btn.classList.remove('active'); }
-        else { set.add(c); btn.classList.add('active'); }
-        if(set.has(dv)) { set.delete(dv); btn.classList.remove('active'); }
-        else { set.add(dv); btn.classList.add('active'); }
-        renderDan();
-    }
-
-    function selectQuick(type, mode) {
-        clearSet(type);
-        for(let i=0; i<10; i++) {
-            if(mode==='tai' && i>=5) toggleNum(type, i);
-            else if(mode==='xiu' && i<5) toggleNum(type, i);
-            else if(mode==='le' && i%2!==0) toggleNum(type, i);
-            else if(mode==='chan' && i%2===0) toggleNum(type, i);
-            else if(mode==='tatca') toggleNum(type, i);
-        }
-    }
-
-    function clearSet(type) {
-        if(type==='nghin') { 
-            nghinSet.clear(); 
-            document.querySelectorAll('#nghin-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } 
-        if(type==='tram') {
-            tramSet.clear(); 
-            document.querySelectorAll('#tram-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } 
-        if(type==='chuc') {
-            chucSet.clear(); 
-            document.querySelectorAll('#chuc-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } 
-        if(type==='dv') {
-            dvSet.clear(); 
-            document.querySelectorAll('#dv-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } else {
-        renderDan();
-    }
-
     function copyDan() {
         const text = document.getElementById('display-dan').innerText;
-        if(text.includes(": ")) {
-            navigator.clipboard.writeText(text.split(": ")[1]).then(() => alert("✅ Đã sao chép dàn số!"));
-        } else {
-            alert("Vui lòng chọn số trước!");
+        if (text.includes(": ")) {
+            navigator.clipboard.writeText(text.split(": ")[1]).then(() => alert("✅ Đã sao chép!"));
         }
     }
 
@@ -337,28 +301,22 @@
         const input = document.getElementById('inputNumbers').value;
         const size = parseInt(document.getElementById('xienType').value);
         let numbers = [...new Set(input.split(/[\s, \n]+/).filter(n => n.length > 0))];
-
-        if (numbers.length < size) { alert(`Lỗi: Cần nhập ít nhất ${size} số để ghép!`); return; }
-
+        if (numbers.length < size) { alert("Không đủ số!"); return; }
         let results = [];
         function combine(start, path) {
             if (path.length === size) { results.push(path.join("-")); return; }
             for (let i = start; i < numbers.length; i++) combine(i + 1, [...path, numbers[i]]);
         }
         combine(0, []);
-        
         currentXienResult = results.join(", ");
         document.getElementById('resultContainer').style.display = 'block';
         document.getElementById('output').innerText = currentXienResult;
-        document.getElementById('count').innerText = `Tổng cộng: ${results.length} cặp xiên ${size}.`;
     }
 
     function copyXien() {
-        if(currentXienResult) {
-            navigator.clipboard.writeText(currentXienResult).then(() => alert("✅ Đã sao chép danh sách xiên!"));
-        }
+        navigator.clipboard.writeText(currentXienResult).then(() => alert("✅ Đã sao chép xiên!"));
     }
-    
+
     window.onload = initButtons;
 </script>
 </body>
