@@ -169,12 +169,6 @@
             
             <label style="margin-left:10px; font-size:13px;">Chọn loại D:</label>
             <select id="DType">
-                <option value="2">2D (Cặp 2 số)</option>
-                <option value="3">3D (Cặp 3 số)</option>
-                <option value="4">3D (Cặp 4 số)</option>
-        </div>
-
-            <select id="DType">
             <div class="grid-num" id="chuc-grid"></div>
             <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
@@ -204,6 +198,7 @@
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">XỈU</button>
                 <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">XÓA</button>
             </div>
+    </select>
 
                 <option value="2">4D</option>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
@@ -212,7 +207,7 @@
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">TÀI</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">XỈU</button>
                 <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">XÓA</button>
-            </div>
+    </div>
 
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
         </div>
