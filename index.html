@@ -172,18 +172,40 @@
             </select>
         </div>
         
-         <h4>1. CHỌN ĐẦU (Hàng chục)</h4>
-            <div class="grid-num" id="chuc-grid"></div>
+        <h4>1. 4D</h4>
+            <div class="grid-num" id="nghin-grid"></div>
             <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">LẺ</button>
-                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('chuc', 'tatca')">TẤT CẢ</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">TÀI</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">XỈU</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">XÓA</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('n', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('n', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('n', 'tatca')">TẤT CẢ</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('n', 'tai')">TÀI</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('n', 'xiu')">XỈU</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('n'); clearSet('xoa')">XÓA</button>
+            </div>
+        
+        <h4>1. 3D</h4>
+            <div class="grid-num" id="t-grid"></div>
+            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('t', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('t', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('t', 'tatca')">TẤT CẢ</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('t', 'tai')">TÀI</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('t', 'xiu')">XỈU</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('t'); clearSet('xoa')">XÓA</button>
+            </div>
+        
+         <h4>1. 2D</h4>
+            <div class="grid-num" id="c-grid"></div>
+            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('c', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('c', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('c', 'tatca')">TẤT CẢ</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('c', 'tai')">TÀI</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('c', 'xiu')">XỈU</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('c'); clearSet('xoa')">XÓA</button>
             </div>
 
-            <h4>2. CHỌN ĐUÔI (Hàng đơn vị)</h4>
+            <h4>2. 1D</h4>
             <div class="grid-num" id="dv-grid"></div>
             <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'chan')">CHẴN</button>
@@ -191,7 +213,7 @@
                 <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('dv', 'tatca')">TẤT CẢ</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'tai')">TÀI</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'xiu')">XỈU</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('dv')">XÓA</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('xoa')">XÓA</button>
             </div>
 
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
@@ -248,8 +270,8 @@
     }
 
     function toggleNum(type, n) {
-        let set = (type === 'chuc') ? chucSet : dvSet;
-        let id = (type === 'chuc') ? `c-${n}` : `d-${n}`;
+        let set = (type === 'nghin') ? chucSet : dvSet;
+        let id = (type === 'nghin') ? `n-${n}` : `t-${n}` : `c-${n}` : `d-${n}`;
         const btn = document.getElementById(id);
         
         if(set.has(n)) { set.delete(n); btn.classList.remove('active'); } 
