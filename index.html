@@ -273,12 +273,23 @@
     }
 
     function toggleNum(type, n) {
-        let set = (type === 'nghin') ? chucSet : dvSet;
+        let set = (type === 'nghin') ? nghinSet : tramSet : chucSet : dvSet;
         let id = (type === 'nghin') ? `n-${n}` : `t-${n}` : `c-${n}` : `d-${n}`;
+        let set = (type === 'tram') ? tramSet : chucSet : dvSet;
+        let id = (type === 'tram') ? `t-${t}` : `c-${t}` : `d-${t}`;
+        let set = (type === 'chuc') ? chucSet : dvSet;
+        let id = (type === 'chuc') ? `c-${c}` : `d-${c}`;
+        
         const btn = document.getElementById(id);
         
         if(set.has(n)) { set.delete(n); btn.classList.remove('active'); } 
         else { set.add(n); btn.classList.add('active'); }
+        ì(set.has(t)) { set.delete(t); btn.classList.remove('active'); }
+        else { set.add(t); btn.classList.add('active'); }
+        if(set.has(c)) { set.delete(c); btn.classList.remove('active'); }
+        else { set.add(c); btn.classList.add('active'); }
+        if(set.has(dv)) { set.delete(dv); btn.classList.remove('active'); }
+        else { set.add(dv); btn.classList.add('active'); }
         renderDan();
     }
 
