@@ -172,10 +172,9 @@
                 <option value="2">2D (Cặp 2 số)</option>
                 <option value="3">3D (Cặp 3 số)</option>
                 <option value="4">3D (Cặp 4 số)</option>
-            </select>
         </div>
 
-            <h4>1. CHỌN ĐẦU (Hàng chục)</h4>
+            <select id="DType">
             <div class="grid-num" id="chuc-grid"></div>
             <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
@@ -186,7 +185,7 @@
                 <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">XÓA</button>
             </div>
 
-            <h4>2. CHỌN ĐUÔI (Hàng đơn vị)</h4>
+            <option value="2">2D</option>
             <div class="grid-num" id="dv-grid"></div>
             <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'chan')">CHẴN</button>
@@ -195,6 +194,24 @@
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'tai')">TÀI</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'xiu')">XỈU</button>
                 <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('dv')">XÓA</button>
+            </div>
+
+                <option value="2">3D</option>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('chuc', 'tatca')">TẤT CẢ</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">TÀI</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">XỈU</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">XÓA</button>
+            </div>
+
+                <option value="2">4D</option>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">LẺ</button>
+                <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('chuc', 'tatca')">TẤT CẢ</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">TÀI</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">XỈU</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">XÓA</button>
             </div>
 
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
