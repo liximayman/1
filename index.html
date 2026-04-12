@@ -169,18 +169,24 @@
 
             <h4>1. CHỌN ĐẦU (Hàng chục)</h4>
             <div class="grid-num" id="chuc-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(3, 1fr); padding-top:0;">
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">Tài (5-9)</button>
-                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">Xỉu (0-4)</button>
+            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">chẵn</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">lẻ</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tatca')">Tất cả</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'tai')">tài xỉu</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'xiu')">xỉu</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('chuc'); clearSet('chuc')">Xóa</button>
             </div>
 
             <h4>2. CHỌN ĐUÔI (Hàng đơn vị)</h4>
             <div class="grid-num" id="dv-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(3, 1fr); padding-top:0;">
+            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'le')">Lẻ</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'chan')">Chẵn</button>
-                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('chuc')">Xóa Hết</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'tatca')">tất cả</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'tai')">tài</button>
+                <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'xiu')">Xỉu</button>
+                <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('dv')">Xóa</button>
             </div>
 
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
