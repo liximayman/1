@@ -308,16 +308,19 @@
         if(type==='nghin') { 
             nghinSet.clear(); 
             document.querySelectorAll('#nghin-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } else {
+        } 
+        if(type==='tram') {
             tramSet.clear(); 
             document.querySelectorAll('#tram-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } else {
+        } 
+        if(type==='chuc') {
             chucSet.clear(); 
             document.querySelectorAll('#chuc-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        } else { 
+        } 
+        if(type==='dv') {
             dvSet.clear(); 
             document.querySelectorAll('#dv-grid .btn-num').forEach(b=>b.classList.remove('active')); 
-        }
+        } else {
         renderDan();
     }
 
