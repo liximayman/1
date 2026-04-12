@@ -305,7 +305,13 @@
     }
 
     function clearSet(type) {
-        if(type==='chuc') { 
+        if(type==='nghin') { 
+            nghinSet.clear(); 
+            document.querySelectorAll('#nghin-grid .btn-num').forEach(b=>b.classList.remove('active')); 
+        } else {
+            tramSet.clear(); 
+            document.querySelectorAll('#tram-grid .btn-num').forEach(b=>b.classList.remove('active')); 
+        } else {
             chucSet.clear(); 
             document.querySelectorAll('#chuc-grid .btn-num').forEach(b=>b.classList.remove('active')); 
         } else { 
