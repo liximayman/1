@@ -105,8 +105,8 @@
         .btn-num:active { transform: scale(0.9); }
         .btn-num.active { background: var(--secondary); border-color: #fff; color: #000; }
         
+        h4 { margin: 0,5px 0px 0,5px; color: var(--blue); font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-
         .panel { display: none; }
         .panel.active { display: block; }
         
@@ -167,9 +167,9 @@
                 <div id="display-dan">Dàn số: (Chưa chọn)</div>
             </div>
         </div>
-
-            <div class="grid-num" id="chuc-grid"></div>
-            <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
+            
+          <div class="grid-num" id="chuc-grid"></div>
+          <div class="grid-num" style="grid-template-columns: repeat(6, 1fr); padding-top:0;">
                 <button class="btn-num" style="background:#FF4500; font-size:12px;" onclick="selectQuick('chuc', 'tatca')">TẤT CẢ</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'chan')">CHẴN</button>
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('chuc', 'le')">LẺ</button>
@@ -187,6 +187,7 @@
                 <button class="btn-num" style="font-size:12px;" onclick="selectQuick('dv', 'xiu')">XỈU</button>
                 <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('dv')">XÓA</button>
             </div>
+        </div>
 
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
         </div>
