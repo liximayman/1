@@ -44,14 +44,14 @@
         }
         .tab-item.active { color: var(--primary); border-bottom: 3px solid var(--primary); background: #1a1a1a; }
 
-        /* KHU VỰC LIVE BOX - CỐ ĐỊNH 25% CHIỀU CAO MÀN HÌNH */
+        /* KHU VỰC LIVE BOX */
         .live-container {
             padding: 5px;
             background: #000;
         }
         .live-box {
             width: 100%;
-            height: 50vh; /* Chỉ chiếm 25% chiều cao màn hình */
+            height: 50vh;
             overflow-y: auto; 
             overflow-x: hidden;
             position: relative;
@@ -61,6 +61,8 @@
             -webkit-overflow-scrolling: touch;
         }
         .live-box iframe {
+            position: absolute;
+            top: -80px;
             width: 100%;
             height: 1500px; /* Chiều cao nội dung gốc để cuộn bên trong */
             border: none;
@@ -79,7 +81,7 @@
             border: 1px dashed #444; 
             font-family: 'Courier New', monospace; 
             font-size: 13px; 
-            line-height: 1.4;
+            line-height: 1;
         }
 
         /* TỐI ƯU LẠI GRID NÚT BẤM */
@@ -98,7 +100,7 @@
             font-size: 15px; 
             font-weight: 600;
             cursor: pointer; 
-            transition: 0.2s;
+            transition: -1s;
         }
         .btn-num:active { transform: scale(0.9); }
         .btn-num.active { background: var(--secondary); border-color: #fff; color: #000; }
@@ -108,18 +110,18 @@
         .panel { display: none; }
         .panel.active { display: block; }
 
-        h4 { margin: 1px 0 1px 1px; color: var(--blue); font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        h4 { margin: 1px 0 2px 1px; color: var(--blue); font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .btn-copy-main { 
             width: calc(100% - 1px); 
-            padding: 14px; 
+            padding: 5px; 
             background: var(--blue); 
             border: none; 
             color: white; 
             font-weight: bold; 
             border-radius: 6px; 
             cursor: pointer; 
-            margin: 12px;
+            margin: 5px;
             font-size: 15px;
         }
 
@@ -166,13 +168,6 @@
                 </div>
                 <div id="display-dan">Dàn số: (Chưa chọn)</div>
             </div>
-            
-            <label style="margin-left:10px; font-size:13px;">Chọn loại D:</label>
-            <select id="DType">
-                <option value="2">2D (Cặp 2 số)</option>
-                <option value="3">3D (Cặp 3 số)</option>
-                <option value="4">3D (Cặp 4 số)</option>
-            </select>
         </div>
 
             <h4>1. CHỌN ĐẦU (Hàng chục)</h4>
@@ -321,4 +316,3 @@
 </script>
 </body>
 </html>
-Phần tad bổ xung thêm tính năng vuốt
