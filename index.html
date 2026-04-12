@@ -164,6 +164,7 @@
                 <div class="live-box">
                     <iframe src="https://az24.vn/xsmb-30-ngay.html"></iframe>
                 </div>
+                <div id="display-dan">Dàn số: (Chưa chọn)</div>
             </div>
 
             <h4>1. CHỌN ĐẦU (Hàng chục)</h4>
@@ -182,7 +183,6 @@
                 <button class="btn-num" style="background:#600; font-size:12px;" onclick="clearSet('dv'); clearSet('chuc')">Xóa Hết</button>
             </div>
 
-            <div id="display-dan">Dàn số: (Chưa chọn)</div>
             <button onclick="copyDan()" class="btn-copy-main">SAO CHÉP DÀN SỐ</button>
         </div>
 
@@ -211,6 +211,14 @@
 <script>
     let chucSet = new Set(), dvSet = new Set();
     let currentXienResult = "";
+    
+    function renderDan() {
+        let res = [];
+        let chucArr = Array.from(chucSet).sort();
+        let dvArr = Array.from(dvSet).sort();
+        chucArr.forEach(c => dvArr.forEach(d => res.push(c + "" + d)));
+        document.getElementById('display-dan').innerText = res.length > 0 ? "Dàn (" + res.length + " số): " + res.join(", ") : "Dàn số: (Chọn số để tạo dàn)";
+    }
 
     function initButtons() {
         const cGrid = document.getElementById('chuc-grid');
@@ -258,14 +266,6 @@
             document.querySelectorAll('#dv-grid .btn-num').forEach(b=>b.classList.remove('active')); 
         }
         renderDan();
-    }
-
-    function renderDan() {
-        let res = [];
-        let chucArr = Array.from(chucSet).sort();
-        let dvArr = Array.from(dvSet).sort();
-        chucArr.forEach(c => dvArr.forEach(d => res.push(c + "" + d)));
-        document.getElementById('display-dan').innerText = res.length > 0 ? "Dàn (" + res.length + " số): " + res.join(", ") : "Dàn số: (Chọn số để tạo dàn)";
     }
 
     function copyDan() {
